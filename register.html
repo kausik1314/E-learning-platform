@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register - Pravaah LMS</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+</head>
+<body class="bg-gradient-to-br from-blue-100 to-green-200 min-h-screen flex items-center justify-center">
+
+  <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
+    <h2 class="text-3xl font-bold mb-6 text-center text-blue-700">📝 Register</h2>
+    <form id="registerForm" class="space-y-4">
+      <input id="name" type="text" placeholder="Name" required class="w-full px-4 py-3 border rounded-lg"/>
+      <input id="email" type="email" placeholder="Email" required class="w-full px-4 py-3 border rounded-lg"/>
+      <input id="password" type="password" placeholder="Password" required class="w-full px-4 py-3 border rounded-lg"/>
+      <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-green-500 text-white font-semibold py-3 rounded-lg hover:from-blue-600 hover:to-green-600">
+        Register
+      </button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      try {
+        const res = await fetch("http://localhost:5000/api/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, password }),
+        });
+
+        const data = await res.json();
+        alert(data.message || "Registered successfully!");
+      } catch (err) {
+        alert("❌ Registration failed");
+      }
+    });
+  </script>
+</body>
+</html>

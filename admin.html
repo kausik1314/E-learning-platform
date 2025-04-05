@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Pravaah LMS</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-yellow-100 via-orange-50 to-red-100 min-h-screen">
+  <header class="bg-yellow-700 text-white p-6 shadow-xl">
+    <div class="flex items-center justify-between max-w-6xl mx-auto">
+      <h1 class="text-3xl font-bold tracking-wide">🛠️ Pravaah | Admin Panel</h1>
+      <img src="https://img.icons8.com/fluency/48/administrator-male.png" alt="Admin Icon" class="w-12 h-12">
+    </div>
+  </header>
+
+  <main class="p-8 space-y-12 max-w-6xl mx-auto">
+    <img src="https://images.unsplash.com/photo-1581091870622-3e84ecf3f4c4?fit=crop&w=1200&q=80" alt="Admin Panel" class="rounded-2xl shadow-xl w-full mb-8">
+
+    <section class="bg-white shadow-xl rounded-2xl p-6">
+      <h2 class="text-2xl font-semibold mb-4 text-yellow-700">👥 Manage Users</h2>
+      <ul class="grid grid-cols-2 gap-4">
+        <li class="bg-yellow-100 p-4 rounded-lg shadow text-lg">Add/Remove Students</li>
+        <li class="bg-yellow-100 p-4 rounded-lg shadow text-lg">Add/Remove Faculty</li>
+      </ul>
+    </section>
+
+    <section class="bg-white shadow-xl rounded-2xl p-6">
+      <h2 class="text-2xl font-semibold mb-4 text-yellow-700">⚙️ System Settings</h2>
+      <img src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9?fit=crop&w=1000&q=80" alt="Settings" class="rounded-xl mb-4 w-full">
+      <button class="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-lg shadow-md text-lg">Update Config</button>
+    </section>
+
+    <section class="bg-white shadow-xl rounded-2xl p-6">
+      <h2 class="text-2xl font-semibold mb-4 text-yellow-700">📊 View Logs</h2>
+      <img src="https://images.unsplash.com/photo-1616469829581-f7cdce65b1a4?fit=crop&w=1000&q=80" alt="Logs" class="rounded-xl mb-4 w-full">
+      <button class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md text-lg">Access Logs</button>
+    </section>
+  </main>
+
+  <footer class="bg-white mt-16 py-6 text-center text-gray-500 shadow-inner">
+    Made with ❤️ for <strong>Pravaah Hackathon 2025</strong> | &copy; 2025 Pravaah LMS
+  </footer>
+</body>
+</html>
