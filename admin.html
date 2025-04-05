@@ -1,3 +1,4 @@
+<!-- Admin Panel for Pravaah LMS -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="./logo-transparent.png">
   <style>
     body { font-family: 'Poppins', sans-serif; }
   </style>
@@ -15,37 +17,328 @@
 <body class="bg-gradient-to-br from-yellow-100 via-orange-50 to-red-100 min-h-screen">
   <header class="bg-yellow-700 text-white p-6 shadow-xl">
     <div class="flex items-center justify-between max-w-6xl mx-auto">
-      <h1 class="text-3xl font-bold tracking-wide">🛠️ Pravaah | Admin Panel</h1>
+      <h1 class="text-3xl font-bold tracking-wide">🛠 Pravaah | Admin Panel</h1>
       <img src="https://img.icons8.com/fluency/48/administrator-male.png" alt="Admin Icon" class="w-12 h-12">
     </div>
   </header>
 
   <main class="p-8 space-y-12 max-w-6xl mx-auto">
-    <img src="https://images.unsplash.com/photo-1581091870622-3e84ecf3f4c4?fit=crop&w=1200&q=80" alt="Admin Panel" class="rounded-2xl shadow-xl w-full mb-8">
+    <!-- <img src="https://images.unsplash.com/photo-1581091870622-3e84ecf3f4c4?fit=crop&w=1200&q=80" alt="Admin Panel" class="rounded-2xl shadow-xl w-full mb-8"> -->
 
     <section class="bg-white shadow-xl rounded-2xl p-6">
       <h2 class="text-2xl font-semibold mb-4 text-yellow-700">👥 Manage Users</h2>
-      <ul class="grid grid-cols-2 gap-4">
-        <li class="bg-yellow-100 p-4 rounded-lg shadow text-lg">Add/Remove Students</li>
-        <li class="bg-yellow-100 p-4 rounded-lg shadow text-lg">Add/Remove Faculty</li>
-      </ul>
+    
+      <!-- User Form -->
+      <form id="userForm" class="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input type="text" id="name" placeholder="Enter Name" required class="border p-2 rounded">
+        <select id="role" required class="border p-2 rounded">
+          <option value="Student">Student</option>
+          <option value="Faculty">Faculty</option>
+        </select>
+        <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded">Add User</button>
+      </form>
+    
+      <!-- Dropdowns for managing users -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div>
+          <label class="font-semibold">📚 Student List</label>
+          <select id="studentDropdown" class="border p-2 w-full rounded mt-2"></select>
+        </div>
+        <div>
+          <label class="font-semibold">👩‍🏫 Faculty List</label>
+          <select id="facultyDropdown" class="border p-2 w-full rounded mt-2"></select>
+        </div>
+      </div>
+    
+      <!-- User Lists -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="text-xl font-semibold mb-2 text-yellow-600">📚 Students</h3>
+          <ul id="studentList" class="space-y-2"></ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold mb-2 text-yellow-600">👩‍🏫 Faculty</h3>
+          <ul id="facultyList" class="space-y-2"></ul>
+        </div>
+      </div>
     </section>
+    
+    <script>
+      const form = document.getElementById('userForm');
+      const studentList = document.getElementById('studentList');
+      const facultyList = document.getElementById('facultyList');
+      const studentDropdown = document.getElementById('studentDropdown');
+      const facultyDropdown = document.getElementById('facultyDropdown');
+    
+      function addUser(name, role) {
+        const li = document.createElement('li');
+        li.className = 'bg-yellow-100 p-3 rounded flex justify-between items-center shadow';
+        li.innerHTML = `
+          <span>${name}</span>
+          <button class="text-red-600 hover:underline text-sm remove-user">Remove</button>
+        `;
+    
+        const option = document.createElement('option');
+        option.text = name;
+    
+        if (role === 'Student') {
+          studentList.appendChild(li);
+          studentDropdown.appendChild(option);
+        } else {
+          facultyList.appendChild(li);
+          facultyDropdown.appendChild(option);
+        }
+    
+        li.querySelector('.remove-user').addEventListener('click', () => {
+          li.remove();
+          const dropdown = role === 'Student' ? studentDropdown : facultyDropdown;
+          [...dropdown.options].forEach(opt => {
+            if (opt.text === name) opt.remove();
+          });
+        });
+      }
+    
+      // Form submission handler
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const role = document.getElementById('role').value;
+        if (!name) return;
+        addUser(name, role);
+        form.reset();
+      });
+    
+      // Pre-fill with random names
+      const sampleStudents = ['Aryan Sharma', 'Sneha Patel', 'Ravi Kumar', 'Priya Mehta'];
+      const sampleFaculty = ['Dr. Anjali Rao', 'Prof. Rajesh Verma', 'Dr. Meenakshi Das'];
+    
+      sampleStudents.forEach(name => addUser(name, 'Student'));
+      sampleFaculty.forEach(name => addUser(name, 'Faculty'));
+    </script>
+    
+    
 
+    <section class="bg-white shadow-xl rounded-2xl p-6 max-w-2xl mx-auto">
+      <h2 class="text-2xl font-semibold mb-4 text-yellow-700">⚙ System Settings</h2>
+    
+      <!-- Maintenance Mode -->
+      <div class="flex items-center justify-between mb-4">
+        <label class="text-lg font-medium text-gray-700">🛠 Maintenance Mode</label>
+        <input type="checkbox" id="maintenanceToggle" class="h-5 w-5 text-yellow-600 focus:ring-yellow-500 border-gray-300 rounded">
+      </div>
+    
+      <!-- Feature Toggle -->
+      <div class="flex items-center justify-between mb-4">
+        <label class="text-lg font-medium text-gray-700">🚀 Enable New Features</label>
+        <input type="checkbox" id="featureToggle" class="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+      </div>
+    
+      <!-- API Key Update -->
+      <div class="mb-4">
+        <label class="text-lg font-medium text-gray-700">🔑 API Key</label>
+        <input type="password" id="apiKey" placeholder="Enter new API key" class="border p-2 rounded w-full">
+      </div>
+    
+      <!-- Performance Monitoring -->
+      <h3 class="text-xl font-semibold mb-2 text-yellow-600">📊 Performance Monitoring</h3>
+      <p id="serverLoad" class="text-gray-700">Server Load: --%</p>
+      <p id="dbUsage" class="text-gray-700">Database Usage: --%</p>
+      <button id="refreshMetricsBtn"
+              class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md mt-2">
+        🔄 Refresh Metrics
+      </button>
+    
+      <!-- Security Settings -->
+      <h3 class="text-xl font-semibold mt-4 mb-2 text-yellow-600">🔒 Security Settings</h3>
+      <div class="flex items-center justify-between mb-4">
+        <label class="text-lg font-medium text-gray-700">🔑 Password Expiry (Days)</label>
+        <input type="number" id="passwordExpiry" class="border p-2 rounded w-16 text-center" value="30">
+      </div>
+    
+      <div class="flex items-center justify-between mb-4">
+        <label class="text-lg font-medium text-gray-700">⏳ Session Timeout (Minutes)</label>
+        <input type="number" id="sessionTimeout" class="border p-2 rounded w-16 text-center" value="15">
+      </div>
+    
+      <!-- Update Button -->
+      <button id="updateConfigBtn"
+              class="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-lg shadow-md text-lg w-full">
+        Update Config
+      </button>
+    
+      <!-- Confirmation Message -->
+      <p id="confirmation" class="text-green-600 font-medium mt-4 hidden">✅ Settings updated successfully!</p>
+    </section>
+    
+    <script>
+      const maintenanceToggle = document.getElementById('maintenanceToggle');
+      const featureToggle = document.getElementById('featureToggle');
+      const apiKeyInput = document.getElementById('apiKey');
+      const passwordExpiry = document.getElementById('passwordExpiry');
+      const sessionTimeout = document.getElementById('sessionTimeout');
+      const updateBtn = document.getElementById('updateConfigBtn');
+      const confirmationMsg = document.getElementById('confirmation');
+      const serverLoad = document.getElementById('serverLoad');
+      const dbUsage = document.getElementById('dbUsage');
+      const refreshMetricsBtn = document.getElementById('refreshMetricsBtn');
+    
+      // Function to update performance metrics
+      function updatePerformanceMetrics() {
+        serverLoad.textContent = "Server Load: " + (Math.random() * 50 + 50).toFixed(2) + "%";
+        dbUsage.textContent = "Database Usage: " + (Math.random() * 30 + 20).toFixed(2) + "%";
+      }
+    
+      // Refresh metrics manually when button is clicked
+      refreshMetricsBtn.addEventListener('click', updatePerformanceMetrics);
+    
+      // Auto-update metrics every 5 seconds
+      setInterval(updatePerformanceMetrics, 5000);
+    
+      // Handle config updates
+      updateBtn.addEventListener('click', () => {
+        const settings = {
+          maintenanceMode: maintenanceToggle.checked,
+          newFeatures: featureToggle.checked,
+          apiKey: apiKeyInput.value,
+          passwordExpiry: passwordExpiry.value,
+          sessionTimeout: sessionTimeout.value
+        };
+    
+        // Simulated API call (backend integration)
+        console.log("Updated Settings:", settings);
+    
+        // Show confirmation message
+        confirmationMsg.classList.remove('hidden');
+        setTimeout(() => confirmationMsg.classList.add('hidden'), 3000);
+      });
+    </script>
+    
+    
+    
+    
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - View Logs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+
+    <!-- View Logs Section -->
     <section class="bg-white shadow-xl rounded-2xl p-6">
-      <h2 class="text-2xl font-semibold mb-4 text-yellow-700">⚙️ System Settings</h2>
-      <img src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9?fit=crop&w=1000&q=80" alt="Settings" class="rounded-xl mb-4 w-full">
-      <button class="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-lg shadow-md text-lg">Update Config</button>
+        <h2 class="text-2xl font-semibold mb-4 text-blue-700">📊 View Logs</h2>
+        <button id="openLogs" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md text-lg">
+            Access Logs
+        </button>
     </section>
 
-    <section class="bg-white shadow-xl rounded-2xl p-6">
-      <h2 class="text-2xl font-semibold mb-4 text-yellow-700">📊 View Logs</h2>
-      <img src="https://images.unsplash.com/photo-1616469829581-f7cdce65b1a4?fit=crop&w=1000&q=80" alt="Logs" class="rounded-xl mb-4 w-full">
-      <button class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md text-lg">Access Logs</button>
-    </section>
-  </main>
+    <!-- Modal for Logs -->
+    <div id="logModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
+        <div class="bg-white rounded-xl shadow-lg p-6 w-3/4">
+            <h2 class="text-2xl font-semibold mb-4 text-blue-700">📝 System Logs</h2>
 
-  <footer class="bg-white mt-16 py-6 text-center text-gray-500 shadow-inner">
-    Made with ❤️ for <strong>Pravaah Hackathon 2025</strong> | &copy; 2025 Pravaah LMS
-  </footer>
+            <!-- Filter Logs -->
+            <label class="font-semibold">Filter Logs:</label>
+            <select id="logFilter" class="border p-2 rounded w-full mb-4">
+                <option value="All">All Logs</option>
+                <option value="System">System Activity</option>
+                <option value="Security">Security & Access</option>
+                <option value="Performance">Performance & Errors</option>
+                <option value="User">User Management</option>
+            </select>
+
+            <!-- Log Display -->
+            <div class="overflow-y-auto max-h-60 border p-2 rounded bg-gray-50">
+                <ul id="logList" class="space-y-2"></ul>
+            </div>
+
+            <!-- Export Button -->
+            <button id="exportLogs" class="mt-4 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
+                Export to CSV
+            </button>
+
+            <!-- Close Button -->
+            <button id="closeLogs" class="mt-4 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Log Management System
+        const logModal = document.getElementById('logModal');
+        const openLogs = document.getElementById('openLogs');
+        const closeLogs = document.getElementById('closeLogs');
+        const logFilter = document.getElementById('logFilter');
+        const logList = document.getElementById('logList');
+        const exportLogs = document.getElementById('exportLogs');
+
+        // Logs stored in local storage (or extend to backend)
+        let logs = JSON.parse(localStorage.getItem('logs')) || [];
+
+        // Function to log an event
+        function addLog(type, message) {
+            const timestamp = new Date().toLocaleString();
+            logs.push({ type, message, timestamp });
+            localStorage.setItem('logs', JSON.stringify(logs));
+        }
+
+        // Example Logs for Demo (Remove in Production)
+        if (logs.length === 0) {
+            addLog('System', 'System settings updated.');
+            addLog('Security', 'Unauthorized login attempt detected.');
+            addLog('Performance', 'Server load reached 80%.');
+            addLog('User', 'New faculty added: Dr. Anjali Rao.');
+        }
+
+        // Open Log Modal
+        openLogs.addEventListener('click', () => {
+            logModal.classList.remove('hidden');
+            displayLogs();
+        });
+
+        // Close Log Modal
+        closeLogs.addEventListener('click', () => {
+            logModal.classList.add('hidden');
+        });
+
+        // Display Logs in Modal
+        function displayLogs() {
+            logList.innerHTML = ''; // Clear list
+            const filter = logFilter.value;
+
+            logs.forEach(log => {
+                if (filter === 'All' || log.type === filter) {
+                    const li = document.createElement('li');
+                    li.className = 'bg-gray-100 p-2 rounded shadow';
+                    li.textContent = `[${log.timestamp}] ${log.type}: ${log.message}`;
+                    logList.appendChild(li);
+                }
+            });
+        }
+
+        // Handle Filter Change
+        logFilter.addEventListener('change', displayLogs);
+
+        // Export Logs to CSV
+        exportLogs.addEventListener('click', () => {
+            let csvContent = "data:text/csv;charset=utf-8,Timestamp,Type,Message\n";
+            logs.forEach(log => {
+                csvContent += `${log.timestamp},${log.type},"${log.message}"\n`;
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement('a');
+            link.setAttribute('href', encodedUri);
+            link.setAttribute('download', 'system_logs.csv');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    </script>
+
 </body>
 </html>

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Student Dashboard - Pravaah LMS</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="./logo-transparent.png">
   <style>
     body { font-family: 'Poppins', sans-serif; }
   </style>
@@ -16,39 +17,91 @@
   <header class="bg-blue-800 text-white p-6 shadow-xl">
     <div class="flex items-center justify-between max-w-6xl mx-auto">
       <h1 class="text-3xl font-bold tracking-wide">🎓 Pravaah | Student Dashboard</h1>
-      <img src="https://img.icons8.com/external-flat-icons-inmotus-design/67/ffffff/external-Student-back-to-school-flat-icons-inmotus-design.png" alt="Student Icon" class="w-12 h-12">
+
     </div>
   </header>
 
   <main class="p-8 space-y-12 max-w-6xl mx-auto">
-    <img src="https://images.unsplash.com/photo-1601933470928-c7b6b090eb3f?fit=crop&w=1200&q=80" alt="Student Learning" class="rounded-2xl shadow-xl w-full mb-8">
+    Student Learning
 
+    <!-- My Courses -->
     <section class="bg-white shadow-xl rounded-2xl p-6 hover:scale-[1.01] transition-all">
       <h2 class="text-2xl font-semibold mb-4 text-blue-800">📘 My Courses</h2>
-      <ul class="grid grid-cols-2 gap-4">
-        <li class="bg-blue-100 p-4 rounded-lg shadow text-lg">Web Development Basics</li>
-        <li class="bg-blue-100 p-4 rounded-lg shadow text-lg">Introduction to AI</li>
-      </ul>
-    </section>
-
-    <section class="bg-white shadow-xl rounded-2xl p-6 hover:scale-[1.01] transition-all">
-      <h2 class="text-2xl font-semibold mb-4 text-blue-800">🎥 Lectures & Materials</h2>
-      <img src="https://images.unsplash.com/photo-1581091215367-59ab6f284783?fit=crop&w=1000&q=80" alt="Lecture" class="rounded-xl mb-4 w-full">
-      <button class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg shadow-md text-lg">View Lectures</button>
-    </section>
-
-    <section class="bg-white shadow-xl rounded-2xl p-6 hover:scale-[1.01] transition-all">
-      <h2 class="text-2xl font-semibold mb-4 text-blue-800">📝 Assignments & Quizzes</h2>
-      <img src="https://images.unsplash.com/photo-1584697964354-60a1d27bd0d8?fit=crop&w=1000&q=80" alt="Assignments" class="rounded-xl mb-4 w-full">
-      <div class="space-x-4">
-        <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-lg shadow-md text-lg">Submit Assignment</button>
-        <button class="bg-purple-500 hover:bg-purple-600 text-white px-6 py-2 rounded-lg shadow-md text-lg">Take Quiz</button>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="text-blue-700 font-medium">Course 1</label>
+          <select class="w-full p-3 rounded-lg border border-blue-300 shadow-sm focus:ring-2 focus:ring-blue-400 transition">
+            <option>Choose a course</option>
+            <option>Web Development</option>
+            <option>App Development</option>
+            <option>C programming</option>
+            <option>OOP in java</option>
+            <option>Python for data science</option>
+          </select>
+        </div>
+        <div>
+          <label class="text-blue-700 font-medium">Course 2</label>
+          <select class="w-full p-3 rounded-lg border border-blue-300 shadow-sm focus:ring-2 focus:ring-blue-400 transition">
+            <option>Choose a course</option>
+            <option>Web Development</option>
+            <option>App Development</option>
+            <option>C programming</option>
+            <option>OOP in java</option>
+            <option>Python for data science</option>
+          </select>
+        </div>
       </div>
     </section>
 
+    <!-- Lectures & Materials -->
+    <!-- <section class="bg-white shadow-xl rounded-2xl p-6 hover:scale-[1.01] transition-all">
+      <h2 class="text-2xl font-semibold mb-4 text-blue-800">🎥 Lectures & Materials</h2>
+
+
+      <!-- <button class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg shadow-md text-lg font-semibold transition transform hover:scale-105">
+        ▶ View Lectures
+      </button> -->
+      
+    <!-- </section> --> 
+    <section class="bg-white shadow-xl rounded-2xl p-6 hover:scale-[1.01] transition-all">
+      <h2 class="text-2xl font-semibold mb-4 text-blue-800">🎥 Lectures & Materials</h2>
+      <!-- <img src="https://images.unsplash.com/photo-1581091215367-59ab6f284783?fit=crop&w=1000&q=80" alt="Lecture" class="rounded-xl mb-4 w-full"> -->
+      
+      <div class="space-y-2">
+        <a href="https://www.youtube.com/watch?v=nu_pCVPKzTk" target="_blank" class="block bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md text-lg text-center">Web Development</a>
+        <a href="https://www.youtube.com/watch?v=fis26HvvDII" target="_blank" class="block bg-purple-500 hover:bg-purple-600 text-white px-6 py-2 rounded-lg shadow-md text-lg text-center">App Development</a>
+        <a href="https://www.youtube.com/watch?v=irqbmMNs2Bo" target="_blank" class="block bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-lg shadow-md text-lg text-center">C Programming</a>
+        <a href="https://www.youtube.com/watch?v=z9bZufPHFLU" target="_blank" class="block bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-lg shadow-md text-lg text-center">C++ Programming</a>
+        <a href="https://www.youtube.com/watch?v=BSVKUk58K6U" target="_blank" class="block bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg shadow-md text-lg text-center">OOP in Java</a>
+        <a href="https://www.youtube.com/watch?v=LHBE6Q9XlzI" target="_blank" class="block bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-lg shadow-md text-lg text-center">Python for Data Science</a>
+      </div>
+    </section>
+
+    <!-- Assignments & Quizzes -->
+    <section class="bg-white shadow-xl rounded-2xl p-6 hover:scale-[1.01] transition-all">
+      <h2 class="text-2xl font-semibold mb-4 text-blue-800">📝 Assignments & Quizzes</h2>
+
+      <div class="space-x-4">
+        <a href ="assignment.html">
+          <button class="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md text-lg font-semibold transition transform hover:scale-105">
+            📂 View Assignments
+          </button>
+        <button class="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-lg shadow-md text-lg font-semibold transition transform hover:scale-105">
+          📤 Submit Assignment
+        </button>
+        <a href="https://docs.google.com/forms/d/1fxdKHcQXM2u5rMr9z14lgPzCtBStZOth4fe7UayWPIs/edit" target="_blank" rel="noopener noreferrer">
+          <button class="inline-flex items-center gap-2 bg-purple-500 hover:bg-purple-600 text-white px-6 py-3 rounded-lg shadow-md text-lg font-semibold transition transform hover:scale-105">
+            🧠 Take Quiz
+          </button>
+        </a>
+        
+      </div>
+    </section>
+
+    <!-- Notifications -->
     <section class="bg-white shadow-xl rounded-2xl p-6 hover:scale-[1.01] transition-all">
       <h2 class="text-2xl font-semibold mb-4 text-blue-800">📢 Notifications</h2>
-      <img src="https://images.unsplash.com/photo-1629909615947-8f4a27c42062?fit=crop&w=1000&q=80" alt="Notifications" class="rounded-xl mb-4 w-full">
+
       <div class="bg-blue-100 p-4 border-l-4 border-blue-500 rounded shadow">
         <p class="text-blue-900 font-medium">📌 Upcoming quiz on AI this Friday! Don’t forget to review module 3 and 4.</p>
       </div>
@@ -61,7 +114,7 @@
 
       <ul class="space-y-3 text-blue-700 text-lg">
         <li>
-          🔹 <a href="intro_toWebDev.pdf" download class="underline hover:text-blue-900">Introduction to Web Development (PDF)</a>
+          🔹 <a href="intro_toAppDev.pdf" download class="underline hover:text-blue-900">Introduction to Web Development (PDF)</a>
         </li>
         <li>
           🔹 <a href="intro_toAppDev.pdf" download class="underline hover:text-blue-900">Introduction to App Development (PDF)</a>
@@ -83,49 +136,42 @@
 
       <div class="mt-6">
         <a href="zip.zip" download class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg shadow-md text-lg">
-          ⬇️ Download All Materials (ZIP)
+          ⬇ Download All Materials (ZIP)
         </a>
       </div>
     </section>
+
+    <section class="bg-white shadow-xl rounded-2xl p-6 hover:scale-[1.01] transition-all">
+      <h2 class="text-2xl font-semibold mb-4 text-blue-800">🤖 AI-Based Course Recommendations</h2>
+      <p class="text-lg mb-6 text-gray-700">
+        Based on your interests and past enrollments, we think you’ll love these:
+      </p>
+    
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <li class="bg-blue-100 p-4 rounded-lg shadow hover:shadow-lg transition-all">
+          <h3 class="font-semibold text-blue-900 text-lg mb-1">
+            🔍 <a href="https://www.udemy.com/topic/web-development/?utm_source=bing&utm_medium=udemyads&utm_campaign=BG-Search_DSA_Beta_Prof_la.EN_cc.India&campaigntype=Search&portfolio=Bing-India&language=EN&product=Course&test=&audience=DSA&topic=&priority=Beta&utm_content=deal4584&utm_term=._ag_1326013411670044.ad._kw_Dev%20en.de_c.dm._pl._ti_dat-2334675503276553:loc-90.li_1669.pd.&matchtype=b" class="hover:underline">Advanced Web Development</a>
+          </h3>
+          <p class="text-gray-700 text-sm">Take your frontend skills to the next level with React, Tailwind, and API integration.</p>
+        </li>
+        <li class="bg-blue-100 p-4 rounded-lg shadow hover:shadow-lg transition-all">
+          <h3 class="font-semibold text-blue-900 text-lg mb-1">
+            🧠 <a href="https://www.udemy.com/course/fundamentals-of-machine-learning-101-level/?utm_source=bing&utm_medium=udemyads&utm_campaign=BG-Search_DSA_Beta_Prof_la.EN_cc.India&campaigntype=Search&portfolio=Bing-India&language=EN&product=Course&test=&audience=DSA&topic=&priority=Beta&utm_content=deal4584&utm_term=._ag_1327112923136029.ad._kw_IT+en.de_c.dm._pl._ti_dat-2334744222699522%3Aloc-90.li_1669.pd.&matchtype=b&couponCode=IND21PM" class="hover:underline">Machine Learning Foundations</a>
+          </h3>
+          <p class="text-gray-700 text-sm">Learn core ML concepts, from supervised learning to model evaluation.</p>
+        </li>
+        <li class="bg-blue-100 p-4 rounded-lg shadow hover:shadow-lg transition-all">
+          <h3 class="font-semibold text-blue-900 text-lg mb-1">
+            🗃 <a href="https://www.udemy.com/course/database-engines-crash-course/?utm_source=bing&utm_medium=udemyads&utm_campaign=BG-Search_DSA_Beta_Prof_la.EN_cc.India&campaigntype=Search&portfolio=Bing-India&language=EN&product=Course&test=&audience=DSA&topic=&priority=Beta&utm_content=deal4584&utm_term=._ag_1326013411670044.ad._kw_Dev%20en.de_c.dm._pl._ti_dat-2334675503276553:loc-90.li_1669.pd.&matchtype=b" class="hover:underline">Database Engineering</a>
+          </h3>
+          <p class="text-gray-700 text-sm">Master SQL, NoSQL, indexing, transactions, and data modeling with real-world examples.</p>
+        </li>
+      </ul>
+
   </main>
 
-  <section class="bg-white shadow-xl rounded-2xl p-6 hover:scale-[1.01] transition-all">
-    <h2 class="text-2xl font-semibold mb-4 text-blue-800">🤖 AI-Based Course Recommendations</h2>
-    <p class="text-lg mb-6 text-gray-700">
-      Based on your interests and past enrollments, we think you’ll love these:
-    </p>
-  
-    <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <li class="bg-blue-100 p-4 rounded-lg shadow hover:shadow-lg transition-all">
-        <h3 class="font-semibold text-blue-900 text-lg mb-1">
-          🔍 <a href="https://www.udemy.com/topic/web-development/?utm_source=bing&utm_medium=udemyads&utm_campaign=BG-Search_DSA_Beta_Prof_la.EN_cc.India&campaigntype=Search&portfolio=Bing-India&language=EN&product=Course&test=&audience=DSA&topic=&priority=Beta&utm_content=deal4584&utm_term=_._ag_1326013411670044_._ad__._kw_Dev%20en_._de_c_._dm__._pl__._ti_dat-2334675503276553:loc-90_._li_1669_._pd__._&matchtype=b" class="hover:underline">Advanced Web Development</a>
-        </h3>
-        <p class="text-gray-700 text-sm">Take your frontend skills to the next level with React, Tailwind, and API integration.</p>
-      </li>
-      <li class="bg-blue-100 p-4 rounded-lg shadow hover:shadow-lg transition-all">
-        <h3 class="font-semibold text-blue-900 text-lg mb-1">
-          🧠 <a href="https://www.udemy.com/course/fundamentals-of-machine-learning-101-level/?utm_source=bing&utm_medium=udemyads&utm_campaign=BG-Search_DSA_Beta_Prof_la.EN_cc.India&campaigntype=Search&portfolio=Bing-India&language=EN&product=Course&test=&audience=DSA&topic=&priority=Beta&utm_content=deal4584&utm_term=_._ag_1327112923136029_._ad__._kw_IT+en_._de_c_._dm__._pl__._ti_dat-2334744222699522%3Aloc-90_._li_1669_._pd__._&matchtype=b&couponCode=IND21PM" class="hover:underline">Machine Learning Foundations</a>
-        </h3>
-        <p class="text-gray-700 text-sm">Learn core ML concepts, from supervised learning to model evaluation.</p>
-      </li>
-      <li class="bg-blue-100 p-4 rounded-lg shadow hover:shadow-lg transition-all">
-        <h3 class="font-semibold text-blue-900 text-lg mb-1">
-          🗃️ <a href="https://www.udemy.com/course/database-engines-crash-course/?utm_source=bing&utm_medium=udemyads&utm_campaign=BG-Search_DSA_Beta_Prof_la.EN_cc.India&campaigntype=Search&portfolio=Bing-India&language=EN&product=Course&test=&audience=DSA&topic=&priority=Beta&utm_content=deal4584&utm_term=_._ag_1326013411670044_._ad__._kw_Dev%20en_._de_c_._dm__._pl__._ti_dat-2334675503276553:loc-90_._li_1669_._pd__._&matchtype=b" class="hover:underline">Database Engineering</a>
-        </h3>
-        <p class="text-gray-700 text-sm">Master SQL, NoSQL, indexing, transactions, and data modeling with real-world examples.</p>
-      </li>
-    </ul>
-  
-    <div class="mt-6">
-      <a href="https://example.com/recommended-courses" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg shadow-md text-lg">
-        🔗 Explore More Recommendations
-      </a>
-    </div>
-  </section>
-  
-
   <footer class="bg-white mt-16 py-6 text-center text-gray-500 shadow-inner">
-    Made with ❤️ for <strong>Pravaah Hackathon 2025</strong> | &copy; 2025 Pravaah LMS
+    Made with for <strong>Pravaah Hackathon 2025</strong> | &copy; 2025 Pravaah LMS
   </footer>
 </body>
-</html>
+</html>*

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Performance Report - Pravaah LMS</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="./logo-transparent.png">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen p-6">
+
+  <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-xl p-8">
+    <h1 class="text-3xl font-bold text-blue-800 mb-4">📊 Student Performance Report</h1>
+    
+    <!-- Student Information -->
+    <div class="bg-blue-100 p-4 rounded-lg shadow">
+      <h2 class="text-xl font-semibold text-blue-700">🎓 Student Name: <span id="student-name" class="font-bold">John Doe</span></h2>
+      <p class="text-blue-600">📅 Semester: Spring 2025</p>
+    </div>
+
+    <!-- Grades Section -->
+    <h2 class="text-2xl font-semibold mt-6 mb-3 text-purple-800">📘 Course Grades</h2>
+    <table class="w-full bg-white shadow-md rounded-lg overflow-hidden">
+      <thead class="bg-purple-700 text-white">
+        <tr>
+          <th class="p-3 text-left">Course</th>
+          <th class="p-3 text-left">Grade</th>
+          <th class="p-3 text-left">Progress</th>
+        </tr>
+      </thead>
+      <tbody id="grades-table">
+        <!-- Grades will be inserted dynamically here -->
+      </tbody>
+    </table>
+
+    <!-- Attendance -->
+    <h2 class="text-2xl font-semibold mt-6 mb-3 text-green-800">📅 Attendance Record</h2>
+    <p class="text-lg">✅ <span id="attendance">Loading...</span> attendance percentage</p>
+    <div class="w-full bg-gray-200 rounded-full h-6">
+      <div id="attendance-bar" class="bg-green-500 h-6 rounded-full text-white text-center text-sm font-bold"></div>
+    </div>
+
+    <!-- Export Button -->
+    <button id="export-pdf" class="mt-6 bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition transform hover:scale-105">
+      📥 Export as PDF
+    </button>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Simulated student data (can be fetched from a backend)
+      const studentName = "John Doe";
+      const grades = [
+        { course: "Web Development", grade: "A", progress: 95 },
+        { course: "Artificial Intelligence", grade: "B+", progress: 85 },
+        { course: "Cloud Computing", grade: "A-", progress: 90 },
+        { course: "Internet of Things", grade: "B", progress: 78 },
+      ];
+      const attendancePercentage = 92;
+
+      // Set student name
+      document.getElementById("student-name").textContent = studentName;
+
+      // Fill grades table
+      const gradesTable = document.getElementById("grades-table");
+      grades.forEach((data) => {
+        const row = document.createElement("tr");
+        row.className = "border-b";
+        row.innerHTML = `
+          <td class="p-3">${data.course}</td>
+          <td class="p-3 font-semibold text-gray-700">${data.grade}</td>
+          <td class="p-3">
+            <div class="w-full bg-gray-200 rounded-full h-5">
+              <div class="bg-blue-500 h-5 rounded-full text-center text-white font-bold" style="width: ${data.progress}%;">
+                ${data.progress}%
+              </div>
+            </div>
+          </td>
+        `;
+        gradesTable.appendChild(row);
+      });
+
+      // Set attendance percentage
+      document.getElementById("attendance").textContent = attendancePercentage + "%";
+      document.getElementById("attendance-bar").style.width = attendancePercentage + "%";
+
+      // Export PDF functionality
+      document.getElementById("export-pdf").addEventListener("click", function () {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(18);
+        doc.text("Student Performance Report", 20, 20);
+
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(14);
+        doc.text(`Student Name: ${studentName}`, 20, 40);
+        doc.text("Semester: Spring 2025", 20, 50);
+
+        let yOffset = 70;
+        doc.setFontSize(16);
+        doc.text("📘 Course Grades", 20, yOffset);
+        yOffset += 10;
+
+        grades.forEach((data) => {
+          doc.text(`${data.course}: ${data.grade} (${data.progress}%)`, 20, yOffset);
+          yOffset += 10;
+        });
+
+        doc.setFontSize(16);
+        yOffset += 10;
+        doc.text("📅 Attendance: " + attendancePercentage + "%", 20, yOffset);
+
+        // Save the file
+        doc.save("Student_Performance_Report.pdf");
+      });
+    });
+  </script>
+
+</body>
+</html>

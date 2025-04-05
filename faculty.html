@@ -1,51 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Faculty Dashboard - Pravaah LMS</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="icon" href="./logo-transparent.png">
   <style>
     body { font-family: 'Poppins', sans-serif; }
   </style>
 </head>
 <body class="bg-gradient-to-br from-purple-100 via-pink-50 to-blue-100 min-h-screen">
+
   <header class="bg-purple-800 text-white p-6 shadow-xl">
     <div class="flex items-center justify-between max-w-6xl mx-auto">
       <h1 class="text-3xl font-bold tracking-wide">👩‍🏫 Pravaah | Faculty Dashboard</h1>
-      <img src="https://img.icons8.com/external-flat-icons-inmotus-design/67/ffffff/external-teacher-back-to-school-flat-icons-inmotus-design.png" alt="Faculty Icon" class="w-12 h-12">
+    
     </div>
   </header>
 
   <main class="p-8 space-y-12 max-w-6xl mx-auto">
-    <img src="https://images.unsplash.com/photo-1584697964354-60a1d27bd0d8?fit=crop&w=1200&q=80" alt="Faculty Teaching" class="rounded-2xl shadow-xl w-full mb-8">
+    Faculty Teaching
 
+    <!-- Manage Courses -->
     <section class="bg-white shadow-xl rounded-2xl p-6">
       <h2 class="text-2xl font-semibold mb-4 text-purple-800">📚 Manage Courses</h2>
-      <ul class="grid grid-cols-2 gap-4">
-        <li class="bg-purple-100 p-4 rounded-lg shadow text-lg">Add New Course</li>
-        <li class="bg-purple-100 p-4 rounded-lg shadow text-lg">Update Course Content</li>
-      </ul>
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-purple-700 mb-1 font-medium">Add New Course</label>
+          <select class="w-full p-3 rounded-lg border border-purple-300 shadow-sm focus:ring-2 focus:ring-purple-400 transition">
+            <option>Select Course</option>
+            <option>Java</option>
+            <option>C++</option>
+            <option>JS</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-purple-700 mb-1 font-medium">Update Content</label>
+          <select class="w-full p-3 rounded-lg border border-purple-300 shadow-sm focus:ring-2 focus:ring-purple-400 transition">
+            <option>Select Module</option>
+            <option>Module-1</option>
+            <option>Module-2</option>
+            <option>Module-3</option>
+          </select>
+        </div>
+      </div>
     </section>
 
+    <!-- Schedule Lectures -->
     <section class="bg-white shadow-xl rounded-2xl p-6">
       <h2 class="text-2xl font-semibold mb-4 text-purple-800">🧑‍🏫 Schedule Lectures</h2>
-      <img src="https://images.unsplash.com/photo-1601933470928-c7b6b090eb3f?fit=crop&w=1000&q=80" alt="Schedule" class="rounded-xl mb-4 w-full">
-      <button class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg shadow-md text-lg">Set Schedule</button>
+
+      <div class="flex flex-col sm:flex-row gap-4 items-start">
+        <select class="w-full sm:w-1/2 p-3 rounded-lg border border-green-300 shadow-sm focus:ring-2 focus:ring-green-400 transition">
+          <option>Select Time Slot</option>
+          <option>9:00am - 10:00am</option>
+          <option>10:00am - 11:00am</option>
+          <option>11:00am - 12:00pm</option>
+          <option>6:00pm - 7:00pm</option>
+        </select>
+        <button class="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition-all duration-200 transform hover:scale-105">
+          Schedule Now
+        </button>
+      </div>
     </section>
 
+    <!-- Performance Reports -->
     <section class="bg-white shadow-xl rounded-2xl p-6">
       <h2 class="text-2xl font-semibold mb-4 text-purple-800">📈 Performance Reports</h2>
-      <img src="https://images.unsplash.com/photo-1584697964360-6b12fa145a2c?fit=crop&w=1000&q=80" alt="Reports" class="rounded-xl mb-4 w-full">
-      <button class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md text-lg">View Reports</button>
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition-all duration-200 transform hover:scale-105">
+          View Reports
+        </button>
     </section>
   </main>
 
   <footer class="bg-white mt-16 py-6 text-center text-gray-500 shadow-inner">
-    Made with ❤️ for <strong>Pravaah Hackathon 2025</strong> | &copy; 2025 Pravaah LMS
+    Made with for <strong>Phoenix Debuggers 2025</strong> | &copy; 2025 Pravaah LMS
   </footer>
+  <script src="script.js"></script>
 </body>
 </html>
